@@ -1,4 +1,4 @@
-# Guía Práctica de FFmpeg y yt-dlp
+# Guía práctica de FFmpeg y yt-dlp
 
 En esta sección documentamos el proceso de instalación y uso de las herramientas de procesamiento multimedia mediante la terminal de Ubuntu Server, utilizando como material de trabajo el video de Daniel Melingo, *Pequeño Paria*.
 
