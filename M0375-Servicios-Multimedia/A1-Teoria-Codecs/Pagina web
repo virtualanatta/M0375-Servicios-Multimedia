@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolos Streaming: Comparativa Técnica Oficial</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/npm/@fontsource/iosevka-charon/index.css');
+
+        :root {
+            --azul: #1E88E5;
+            --verde: #43A047;
+            --amarillo: #FDD835;
+            --rojo: #E53935;
+            --fondo: #0a0b10;
+            --card: #151921;
+            --borde: #2d333b;
+            --texto: #f0f6fc;
+            --subtexto: #8b949e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Iosevka Charon', monospace;
+            background-color: var(--fondo);
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--borde);
+            background: radial-gradient(circle at top, #1c2128, var(--fondo));
+        }
+
+        h1 { font-size: 2.8rem; color: var(--amarillo); letter-spacing: -1px; }
+        .hero p { color: var(--subtexto); margin-top: 10px; font-size: 1.1rem; }
+
+        .wrapper { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        .protocolo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--borde);
+            border-radius: 12px;
+            padding: 30px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover { border-color: #444; transform: translateY(-3px); }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--borde);
+            padding-bottom: 15px;
+        }
+
+        .card-header h2 { font-size: 1.8rem; }
+
+        .meta-list { list-style: none; }
+        .meta-item {
+            margin-bottom: 18px;
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            align-items: start;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--subtexto);
+            font-weight: bold;
+            letter-spacing: 1px;
+            padding-top: 4px;
+        }
+
+        .meta-value { font-size: 1rem; color: var(--texto); }
+
+        /* Acentos de color */
+        .rtmp h2 { color: var(--azul); }
+        .hls h2 { color: var(--verde); }
+        .rtsp h2 { color: var(--amarillo); }
+        .srt h2 { color: var(--rojo); }
+
+        .latencia-tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background: #222;
+        }
+
+        @media (max-width: 600px) {
+            .protocolo-grid { grid-template-columns: 1fr; }
+            .meta-item { grid-template-columns: 1fr; gap: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <h1>Ecosistema Multimedia</h1>
+    <p>Análisis Comparativo de Protocolos de Transporte y Control</p>
+</header>
+
+<div class="wrapper">
+    <div class="protocolo-grid">
+        
+        <article class="card rtmp">
+            <div class="card-header">
+                <h2>RTMP</h2>
+                <span class="latencia-tag" style="color: var(--azul)">BAJA</span>
+            </div>
+            <ul class="meta-list">
+                <li class="meta-item">
+                    <div class="meta-label">Funcionalidad</div>
+                    <div class="meta-value">Ingesta de vídeo (Ingest) desde encoders hacia servidores de distribución.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Latencia</div>
+                    <div class="meta-value">3 a 5 segundos. Estable y predecible en redes locales.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Red</div>
+                    <div class="meta-value">TCP. Requiere conexión persistente; sensible a cortes de red.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Seguridad</div>
+                    <div class="meta-value">RTMPS (Cifrado SSL/TLS) para proteger la transmisión.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Compatibilidad</div>
+                    <div class="meta-value">OBS Studio, vMix, FFmpeg. No apto para navegadores modernos.</div>
+                </li>
+            </ul>
+        </article>
+
+        <article class="card hls">
+            <div class="card-header">
+                <h2>HLS</h2>
+                <span class="latencia-tag" style="color: var(--verde)">ALTA</span>
+            </div>
+            <ul class="meta-list">
+                <li class="meta-item">
+                    <div class="meta-label">Funcionalidad</div>
+                    <div class="meta-value">Distribución masiva. Streaming Adaptativo (ABR) según ancho de banda.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Latencia</div>
+                    <div class="meta-value">10 a 30 segundos. El cliente debe acumular segmentos (.ts).</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Red</div>
+                    <div class="meta-value">HTTP/TCP. Atraviesa firewalls y CDNs sin configuración especial.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Seguridad</div>
+                    <div class="meta-value">Muy alta. Soporta cifrado AES-128 y sistemas DRM (Widevine).</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Compatibilidad</div>
+                    <div class="meta-value">Universal: iOS, Android, Safari, Chrome, Smart TVs.</div>
+                </li>
+            </ul>
+        </article>
+
+        <article class="card rtsp">
+            <div class="card-header">
+                <h2>RTSP</h2>
+                <span class="latencia-tag" style="color: var(--amarillo)">MUY BAJA</span>
+            </div>
+            <ul class="meta-list">
+                <li class="meta-item">
+                    <div class="meta-label">Funcionalidad</div>
+                    <div class="meta-value">Control de sesiones multimedia en tiempo real (Play/Pause/Record).</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Latencia</div>
+                    <div class="meta-value">Menos de 2 segundos. Crítico para videovigilancia activa.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Red</div>
+                    <div class="meta-value">TCP para control y UDP para datos. Complejo en redes externas.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Seguridad</div>
+                    <div class="meta-value">Básica (Autenticación Digest). Generalmente en redes locales.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Compatibilidad</div>
+                    <div class="meta-value">Cámaras IP, NVR, VLC Player. Incompatible con Web nativa.</div>
+                </li>
+            </ul>
+        </article>
+
+        <article class="card srt">
+            <div class="card-header">
+                <h2>SRT</h2>
+                <span class="latencia-tag" style="color: var(--rojo)">ULTRA BAJA</span>
+            </div>
+            <ul class="meta-list">
+                <li class="meta-item">
+                    <div class="meta-label">Funcionalidad</div>
+                    <div class="meta-value">Transporte seguro en redes inestables (Internet pública).</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Latencia</div>
+                    <div class="meta-value">Milisegundos. Ajustable según la calidad de la red.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Red</div>
+                    <div class="meta-value">UDP con ARQ (Reenvío automático de paquetes perdidos).</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Seguridad</div>
+                    <div class="meta-value">AES 128/256 bits nativo. Nivel broadcast profesional.</div>
+                </li>
+                <li class="meta-item">
+                    <div class="meta-label">Compatibilidad</div>
+                    <div class="meta-value">Hardware Haivision, vMix, encoders profesionales.</div>
+                </li>
+            </ul>
+        </article>
+
+    </div>
+</div>
+
+</body>
+</html> 
+
+
