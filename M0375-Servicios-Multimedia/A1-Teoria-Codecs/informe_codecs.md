@@ -23,4 +23,12 @@ Respecto a los conteoedores, el MP4 es el universal, ofreciendo maxima compatibi
 El comando ffmpeg -i metal-violin-f616.mp4 -vcodec libx264 metal-violin-f616.mkv recodifica el video, este comando justifica la accion con el parametro -vcodec libx264, el cual ordena explicitamente a FFmpeg que vuelva a procesar la imagen utilizando el codec de software H.265
 El codec H.264 en el comando destaca por el equilibro entre calidad visual y compatibilidad de harware en cualquier dispositivo del mundo, pero si se compara con el H.265, este ofrece el doble de eficiencia en compresion, obteniendo la misma calidad con la mitad de tamaño, pero el problema que tiene es la exigencia de una potencia computacional mayor para ser decodificado, lo que provoca tirones o bloqueos al reproducirlo en hardware antiguo sin aceleracion grafica dedicada
 # Fundamentos y Características de yt-dlp
+Por otro lado, yt-dlp es un software por terminal enfocado en descargar contenido multimedia, este destaca por tener un mantenimiento activo, capacidad de invadir las severas restricciones de vellocidad impuestas por Youtube y una velocidad de descargas rapida y estable
+Sus caracteristicas mas destacadas incluyen una seleccion meticulosa de formatos, pudiendo elegir el descargar solo el audio, o video en diferentes resoluciones, la descarga e incurstraciona utomatica de subtitulos, la inyeccion de metadata y caratulas en el archivo
 # Comparativa de Códecs en yt-dlp
+# H.264
+Asegura una compatibilidad universal con el problema de generar archivos pesados con una compresion menos eficiente, por lo que se recomienda usarlo en reproductores o televisiones antiguas
+# VP9
+Impulsado por Google, ofrece una compresion excelente y es el estandar para videos en 2K y 4K en Youtube, se recomienda por su facilidad al equilibrar calidad de imagen con un tamaño moderado, siendo compatible con la mayoria de navegadores y dispositivos modernos
+# AV1
+Este ahorra un espacio masivo frente a otros manteniendo una calidad impecable, pero su decodificacion es demasiado pesada por lo que se recomienda usar en bibliotecas de video a largo plazo, siempre y cuando se disponga de hardware al día que soporte dicho codec de forma nativa
