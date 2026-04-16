@@ -1,34 +1,191 @@
-# Fundamentos de FFmpeg
-Es una herramienta de software libre que funciona mediante comandos, en el ambito del procesamiento multimedia actua como el motor principal para manipular, transcodificar, grabar y emitir video y audio. Su página oficial es https://ffmpeg.org/documentation.html, donde está la documentación técnica
-## Caracteristicas
-1. Permite transcodificar archivos entre diferentes codecs de video y audio
-2. Facilita el multiplexado, en otras palabras, cambiar de contenedores multimedia sin perder calidad
-3. Incorpora filtros avanzados para escalar resoluciones, recortar, cambiar la tasa de fotogramas o aplicar marcas de agua
-4. Gestiona pistas de forma independiente, permitiendo extrar audio, eliminar canales o añadir subtitulos
-5. Permite realizar transimiones en red, mediante protocolos RTMP,HLS o SRT
-# Instalación y Requisitos Previos
-Los requisitos indispensables són 2, conexion a internet y conocimientos en uso de terminal, sin olvidar la dependencia de yt-dlp con FFmpeg, este debe de estar instalado antes
-## Linux
-  Este es el entorno nativo, desde la terminal actualizamos los repositorios con sudo apt update e instalamos FFmpeg con sudo apt install ffmpeg
-  Para yt-dlp, la mejor practica es descargar su ejectuable oficial con el comando sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp, dandole permisos de ejecucion con el comando  sudo chmod a+rx /usr/local/bin/yt-dlp
-## macOS
-La vía mas rapida y directa es mediante el gestor de paquetes Homebrew, debido a que resuelve las dependencias automaticamente, en la terminal se ejecuta mediante brew install ffmpeg y posteriormente brew install yt-dlp
-## Windows
-Este requiere configuración manual, donde primero descargamos el archivo .zip desde su pagina oficial, el paso mas importante es acceder a la configuracion avanzada del ssistema y añadir la ruta de la carpeta bin a las variables de entorno (PATH), para que la consola reconozca los comandos, para yt-dlp sirve con descargar el ejecutable de github en la misma ruta de FFmpeg para que tengan compatibilidad
-# Contenedores y Manipulación
-Es posible cambiar de contenedor sin modificar el contenido del video o audio, este se logra mediante el multiplexado, esto se consigue sin recodificar, por lo que el proceso es rapido y sin perdida de calidad.
-Por ejemplo, para pasar de un archivo .mp4 a .mk, la operacion en FFmpeg seria_ ffmpeg -i video.mp4 -c copy videoo.mkv, donde el parametro -c copy ordena al sistema para que copie las pistas de origen intactas hacia el nuevo contenedor
-Respecto a los conteoedores, el MP4 es el universal, ofreciendo maxima compatibilidad con navegadores, televisores, consolas y dispositivos moviles, conviene usarlo cuando el objetivo es la distribucion masiva o subida web, potr otro lado el MKV es un formato de codigo abierto mucho mas flexible, es la eleccino predefinida para colecciones personales y servidores locales como Jellyfin, ya que permite encapsular multiples pistas de video, diversos idiomas de audio y multiples subtitulos en un unico archivo
-# Análisis de Comandos y Códecs en FFmpeg
-El comando ffmpeg -i metal-violin-f616.mp4 -vcodec libx264 metal-violin-f616.mkv recodifica el video, este comando justifica la accion con el parametro -vcodec libx264, el cual ordena explicitamente a FFmpeg que vuelva a procesar la imagen utilizando el codec de software H.265
-El codec H.264 en el comando destaca por el equilibro entre calidad visual y compatibilidad de harware en cualquier dispositivo del mundo, pero si se compara con el H.265, este ofrece el doble de eficiencia en compresion, obteniendo la misma calidad con la mitad de tamaño, pero el problema que tiene es la exigencia de una potencia computacional mayor para ser decodificado, lo que provoca tirones o bloqueos al reproducirlo en hardware antiguo sin aceleracion grafica dedicada
-# Fundamentos y Características de yt-dlp
-Por otro lado, yt-dlp es un software por terminal enfocado en descargar contenido multimedia, este destaca por tener un mantenimiento activo, capacidad de invadir las severas restricciones de vellocidad impuestas por Youtube y una velocidad de descargas rapida y estable
-Sus caracteristicas mas destacadas incluyen una seleccion meticulosa de formatos, pudiendo elegir el descargar solo el audio, o video en diferentes resoluciones, la descarga e incurstraciona utomatica de subtitulos, la inyeccion de metadata y caratulas en el archivo
-# Comparativa de Códecs en yt-dlp
-# H.264
-Asegura una compatibilidad universal con el problema de generar archivos pesados con una compresion menos eficiente, por lo que se recomienda usarlo en reproductores o televisiones antiguas
-# VP9
-Impulsado por Google, ofrece una compresion excelente y es el estandar para videos en 2K y 4K en Youtube, se recomienda por su facilidad al equilibrar calidad de imagen con un tamaño moderado, siendo compatible con la mayoria de navegadores y dispositivos modernos
-# AV1
-Este ahorra un espacio masivo frente a otros manteniendo una calidad impecable, pero su decodificacion es demasiado pesada por lo que se recomienda usar en bibliotecas de video a largo plazo, siempre y cuando se disponga de hardware al día que soporte dicho codec de forma nativa
+## ¿Qué estrategias usaste para verificar que la información generada por la IA sobre códecs y contenedores es precisa y actualizada?
+
+Busqué los conceptos mencionados y los leí (no exhaustivamente).
+
+## ¿En qué momentos decidiste no confiar en la IA y buscar fuentes adicionales? ¿Por qué? O por el contrario, ¿has tomado por válido todo lo que te dice?
+
+No suelo tomar todo lo que me da la IA y pegarlo directamente, sobre todo en teoría pero en práctica (como terminal o configuraciones) soy más confiado en la IA, pero sé que la inteligencia artificial toma cualquier fuente aun si está equivocada, puse muchas fuentes de Reddit puesto que lo veo como una falla, es un foro online donde cualquiera puede poner lo que quiera y la IA no lo diferencia.
+
+## ¿Cómo ajustaste tu prompt inicial para obtener respuestas más útiles o profundas? Muestra al menos dos versiones de tu prompt y explica los cambios.
+
+En el segundo prompt simplemente le di las preguntas y le pedí que explique detalladamente para que yo pueda hacer resumen con mis palabras. La segunda es por la IA y la tercera con el prompt propio.
+
+## ¿Qué palabras clave o estructuras incluiste en tu prompt para guiar mejor la respuesta de la IA? ¿Funcionaron?
+
+Busqué las fuentes, le pedí que actuase como profesor y le dije que soy nuevo en este tema.
+
+## ¿Cómo adaptaste la respuesta de la IA a tu propio estilo o nivel de comprensión? ¿Qué partes reescribiste, simplificaste o expandiste?
+
+Lo tengo configurado para que vaya adaptándose a mi manera de escribir y explicar para que yo pueda entenderlo mejor, conceptos que nunca vi, errores que se repiten mucho, aunque admito que también imita mis faltas de ortografía porque escribo sin preocuparme en ese aspecto.
+
+## ¿Incluiste ejemplos propios o analogías personales? ¿Por qué crees que eso mejora tu aprendizaje?
+
+Me ayuda a verlo como si hablara conmigo mismo y me da facilidad a imitarme.
+
+## ¿Identificaste algún error, omisión o sesgo en la respuesta de la IA? ¿Cómo lo corregiste?
+
+No vi ningún error de la IA sino mío, al imitar mi forma de escribir y explicar también me mostró mi problema al momento de explicar conceptos nuevos por lo que no entendí la primera vez.
+
+## ¿La IA te dio una respuesta demasiado general? ¿Cómo la hiciste más específica o contextualizada a tu caso?
+
+## ¿Si tuvieras que explicar este tema a un compañero que no entiende nada de códecs, cómo usarías la IA para ayudarte a preparar una explicación sencilla?
+
+Le pediría que sea un profesor explicando a un alumno nuevo en este tema reforzando puntos "difíciles".
+
+## ¿Qué parte del contenido generado por la IA usarías en un proyecto real (por ejemplo, configurar Jellyfin)? ¿Por qué?
+
+Me apoyaría mucho en la instalación y configuración pero no tanto en los errores, he tenido experiencias pasadas en las que al querer corregir errores, la IA se expandía mucho y buscaba errores que no había en ese momento, errores simples como un archivo con extensión errónea me pedía configurar muchas más cosas.
+
+## ¿Qué aprendiste sobre tu propio proceso de aprendizaje al usar la IA en esta tarea?
+
+Copiar y pegar no sirve.
+
+## ¿Crees que usar la IA te hizo aprender más, menos o de forma diferente? Justifica tu respuesta.
+
+Considero que es algo que varía según cómo se usa, no es lo mismo darle directamente las preguntas y que te responda a buscar la información, decirlo que lo explique de x manera y se adapte a tu ritmo.
+
+Prompt 2:
+Informe Técnico: Formatos, Códecs y Calidad Multimedia
+1. Fundamentos: Contenedores y Códecs
+
+En el procesamiento multimedia, es vital diferenciar entre el envoltorio y el contenido:
+
+    Códec (Codificador/Decodificador): Es el algoritmo encargado de comprimir y descomprimir los datos (ej. H.264, AAC). Su objetivo es reducir el tamaño del archivo eliminando redundancias.
+
+    Contenedor: Es el formato de archivo (ej. MP4, MKV) que empaqueta los distintos flujos (streams) de vídeo, audio y subtítulos en una sola unidad, junto con los metadatos (títulos, etiquetas, capítulos).
+
+2. Compresión y Calidad Visual
+Compresión Lossy vs. Lossless
+
+    Lossy (Con pérdida): Elimina información que el sistema sensorial humano no percibe fácilmente. Permite una reducción de tamaño masiva (ej. MP3, H.264).
+
+    Lossless (Sin pérdida): Conserva cada bit de la fuente original. Se utiliza en archivos maestros de postproducción para evitar la degradación tras múltiples ediciones.
+
+Submuestreo de Croma (4:2:0)
+
+El ojo humano es más sensible a los cambios de brillo (Luma) que a los de color (Croma). El submuestreo 4:2:0 reduce la resolución del color a la mitad tanto horizontal como verticalmente.
+
+    Situaciones críticas: No podemos permitirnos esta reducción en entornos de Chroma Key (pantalla verde) o gradación de color profesional, donde se requiere información 4:4:4 para evitar bordes "dentados" y asegurar la precisión del recorte.
+
+3. Evolución de los Códecs Modernos
+Códec	Eficiencia	Compatibilidad	Licencia
+H.264 (AVC)	Estándar	Universal	Royalties
+H.265 (HEVC)	+50% vs H.264	Alta (HW moderno)	Royalties (Compleja)
+VP9	Alta	Navegadores/Android	Libre (Google)
+AV1	Muy Alta	En crecimiento	Libre (AOM)
+
+    VVC (H.266): Promete reducir a la mitad el bitrate de HEVC, pero su adopción es lenta debido a la enorme potencia de cálculo requerida y la fragmentación de patentes.
+
+    Consorcio AOM: Google, Netflix y Apple crearon AV1 como un estándar Royalty-free para evitar los costes millonarios de licencias que exige el grupo MPEG por usar H.265.
+
+4. Rendimiento y Transcodificación
+Aceleración por Hardware
+
+Frente a la transcodificación por software (CPU), que es lenta pero de máxima calidad, existen chips específicos en las GPUs:
+
+    NVENC (Nvidia), QuickSync (Intel), VAAPI (Linux).
+
+    Ventaja: Rapidez extrema y liberación de la carga de la CPU.
+
+    Inconveniente: Menor flexibilidad y, en bitrates muy bajos, una calidad ligeramente inferior al procesado por software.
+
+Direct Play vs. Transcoding
+
+En servidores como Jellyfin:
+
+    Direct Play: El cliente soporta el códec. El servidor envía el archivo tal cual. Consumo de recursos: Mínimo.
+
+    Transcoding: El cliente no soporta el formato. El servidor debe convertir el vídeo "al vuelo". Esto puede saturar la CPU si no se dispone de aceleración hardware.
+
+5. Streaming Adaptativo (ABR)
+
+Tecnologías como HLS o MPEG-DASH permiten que el vídeo no se detenga si fluctúa la conexión:
+
+    El servidor divide el vídeo en segmentos (trozos de 2-10 seg).
+
+    Genera varias renditions (calidades: 1080p, 720p, 360p).
+
+    El Manifest (.m3u8) lista estas opciones.
+
+    El cliente mide su velocidad y pide el siguiente segmento en la calidad que su red soporte en ese instante.
+Prompt 3:
+Bienvenido a esta introducción técnica. Como verás, el mundo del vídeo y el audio digital no trata solo de archivos, sino de cómo engañamos al ojo y al oído humano para que perciban calidad utilizando la mínima cantidad de datos posible.
+
+A partir de las fuentes que has seleccionado, he estructurado esta lección para que entiendas la jerarquía de estos conceptos, desde lo más básico (el archivo) hasta lo más complejo (el streaming que consumes a diario).
+1. La Anatomía del Multimedia: Contenedores, Flujos y Metadatos
+
+Para empezar, debemos diferenciar entre la "caja" y el "contenido".
+
+    Contenedor: Imagina una caja o un sobre (como un archivo .mp4 o .mkv). Su función es mantener unidos y sincronizados diferentes elementos.
+
+    Flujos o Streams: Dentro de esa "caja" hay diferentes pistas independientes. Normalmente, verás un flujo de vídeo, uno o varios de audio (idiomas) y flujos de subtítulos.
+
+    Códec: Es el lenguaje en el que están escritos esos flujos. Es un acrónimo de "Codificador-Decodificador". El códec decide cómo se comprime la imagen para que no ocupe terabytes.
+
+    Metadatos: Es la "etiqueta" de la caja. Información invisible que dice quién es el autor, la resolución, la fecha o el formato de color. Es información sobre los datos.
+
+2. La Ciencia de la Compresión: Calidad vs. Espacio
+
+Como los archivos de vídeo originales son masivos, necesitamos comprimirlos. Aquí entran dos conceptos vitales:
+
+    Compresión Lossy (Con pérdida): Es la más común. Se elimina información que el ser humano no nota fácilmente para reducir el tamaño. Si comprimes demasiado, aparecerán "cuadraditos" (artefactos). Una vez eliminada, esa información no se puede recuperar.
+
+    Compresión Lossless (Sin pérdida): Mantiene cada bit original. El archivo es enorme, pero la calidad es perfecta. Se usa principalmente en entornos profesionales de edición o archivos maestros.
+
+    Bitrate (Tasa de bits): Es la cantidad de información que se procesa por segundo (se mide en Mbps o kbps).
+
+        Diferencia clave: El Bitrate define la calidad del archivo; el Ancho de Banda es la "tubería" por donde pasa ese archivo. Si el bitrate es mayor que tu ancho de banda, el vídeo se cortará.
+
+3. El Color y el Ojo Humano: Chroma Subsampling
+
+Aquí es donde empezamos a ahorrar espacio de forma inteligente. El ojo humano detecta mucho mejor los cambios de brillo (Luma) que los cambios de color (Croma).
+
+    4:4:4: No hay compresión de color. Cada píxel tiene su propio dato de color. Se usa en cine y diseño.
+
+    4:2:2: Se usa en televisión profesional.
+
+    4:2:0: Es el estándar de internet (YouTube, Netflix). Se elimina gran parte de la información de color porque nuestro ojo apenas lo nota, ahorrando hasta un 50% de espacio.
+
+        ¿Cuándo es un problema? En ediciones de Chroma Key (pantalla verde). Si tienes poca información de color (4:2:0), el recorte de los bordes será defectuoso.
+
+4. La Guerra de Códecs: De H.264 a AV1
+
+Seguramente has visto términos como H.265 o HEVC. Es importante aclarar que H.265 y HEVC son lo mismo (High Efficiency Video Coding). Es el sucesor del H.264 (AVC), el estándar actual.
+
+    H.265/HEVC: Comprime el doble de mejor que H.264 con la misma calidad, pero requiere mucha más potencia de procesador.
+
+    VP9: La alternativa gratuita de Google, usada masivamente en YouTube.
+
+    AV1: Es el nuevo estándar impulsado por el consorcio AOM (Alliance for Open Media). Es Royalty-Free (sin costes de licencia), lo que permite a gigantes como Netflix o Google ahorrar millones en derechos de autor mientras ofrecen una compresión superior a H.265.
+
+    VVC (H.266): El futuro. Promete reducir el peso de los archivos 4K y 8K a la mitad de lo que ocupa hoy el H.265, aunque aún es muy pesado de procesar.
+
+5. El Servidor en Acción: Transcodificación y Aceleración
+
+Cuando montas un servidor (como Jellyfin o Plex), te encuentras con estos escenarios:
+
+    Direct Play (Reproducción Directa): El dispositivo donde ves el vídeo soporta el códec original. El servidor solo envía el archivo. Es lo ideal porque no consume recursos.
+
+    Transcoding (Transcodificación): Si tu TV no entiende el códec (por ejemplo, es muy vieja), el servidor debe convertir el vídeo "al vuelo" a un formato que la TV entienda. Esto es un "asesino de CPUs".
+
+    Aceleración por Hardware: Para evitar que la CPU se queme transcodificando, usamos chips específicos de la tarjeta gráfica:
+
+        Intel QuickSync / VAAPI: Muy eficientes en servidores con procesadores Intel.
+
+        NVENC: El motor de las tarjetas NVIDIA.
+
+        VideoToolbox: El sistema de Apple.
+
+6. Streaming de Nueva Generación: ABR y Manifiestos
+
+¿Te has fijado que YouTube a veces baja de calidad para no cortarse? Eso es el ABR (Adaptive Bitrate Streaming) y funciona mediante protocolos como HLS (de Apple) o MPEG-DASH.
+
+Conceptos que debes dominar aquí:
+
+    Segmentos: El servidor no te envía un archivo gigante de 2GB. Corta el vídeo en "trocitos" de pocos segundos.
+
+    Rendition (Versión): El servidor guarda el mismo vídeo en varias calidades (1080p, 720p, 480p). Cada una es una "rendition".
+
+    Manifest (Manifiesto): Es un archivo de texto (como el .m3u8 en HLS o .mpd en DASH). Es el "índice" que le dice al reproductor dónde están todos los segmentos y qué calidades hay disponibles.
+
+    El Proceso: Tu reproductor mide tu velocidad de internet cada pocos segundos. Si ve que tu red va lenta, mira el Manifiesto y pide automáticamente el siguiente Segmento de una Rendition más baja para que la película no se detenga.
