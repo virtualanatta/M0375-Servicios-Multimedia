@@ -1,1 +1,10 @@
-
+docker run -d \
+ --name jellyfin \
+ --user 1000:1000 \
+ -p 8096:8096/tcp \
+ -p 7359:7359/udp \
+ --volume /home/dcoca/jellyfin/config:/config \
+ --volume /home/dcoca/jellyfin/cache:/cache \
+ --mount type=bind,source=/home/dcoca/jellyfin/media,target=/media \
+ --restart=unless-stopped \
+ jellyfin/jellyfin
