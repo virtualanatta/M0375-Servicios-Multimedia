@@ -58,7 +58,7 @@ Con todo configurado, ya puedes entrar desde cualquier PC de la red o desde el m
 
 **App Jellyfin y cómo entrar desde el smartphone:**
 
-<img width="1843" height="302" alt="imagen" src="https://github.com/user-attachments/assets/edfa711d-b5b5-472f-8276-93bc16e29be7" />
+<img width="1843" height="302" alt="video" src="https://github.com/user-attachments/assets/edfa711d-b5b5-472f-8276-93bc16e29be7" />
 
 ## Jellyfin vs Plex
 
