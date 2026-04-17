@@ -2,8 +2,6 @@
 
 Este repositorio contiene la documentación técnica y las prácticas del módulo **M0375: Servicios**. El enfoque principal de estas actividades es el despliegue, la configuración y el análisis de protocolos de transmisión, códecs y servidores multimedia en entornos locales.
 
-Toda la infraestructura descrita en estas prácticas está pensada para ejecutarse en entornos autohospedados. Las pruebas de carga multimedia y streaming se han diseñado teniendo en cuenta un servidor principal con 4 TB de almacenamiento, gestión de red con SQM y filtrado mediante AdGuard Home.
-
 ---
 
 ## Índice de Actividades
