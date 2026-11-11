@@ -9,8 +9,6 @@ RTMP mantiene una conexión TCP persistente entre emisor y servidor tras un *han
 El contenedor se lanza desde un script en un directorio dedicado, de modo que Docker resuelve las dependencias de nginx-rtmp sin instalar nada en el sistema.
 
 <img width="416" height="90" alt="Directorio y script" src="https://github.com/user-attachments/assets/f9508172-7c13-4cf9-9e8f-a4df41d29928" />
-<img width="416" height="90" alt="Permisos de ejecución" src="https://github.com/user-attachments/assets/92579eb6-93d0-4122-8ac7-09caefe529b1" />
-<img width="416" height="90" alt="Ejecución" src="https://github.com/user-attachments/assets/e7e4f488-5b35-4cd5-85ff-8622da72893d" />
 
 ```bash
 docker ps --filter name=nginx-rtmp
