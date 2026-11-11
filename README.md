@@ -1,38 +1,16 @@
-# M0375 - Servicios Multimedia
+# M0375 · Servicios multimedia
 
-Este repositorio contiene la documentación técnica y las prácticas del módulo **M0375: Servicios**. El enfoque principal de estas actividades es el despliegue, la configuración y el análisis de protocolos de transmisión, códecs y servidores multimedia en entornos locales.
+Prácticas del módulo de servicios del ciclo ASIR: códecs y contenedores, procesamiento con FFmpeg, servidor multimedia con Jellyfin y streaming en directo por RTMP. Todo desplegado sobre Ubuntu en máquinas virtuales y, donde aplica, con Docker.
 
----
+| Práctica | Contenido |
+|---|---|
+| [A1 · Códecs y contenedores](A1-Teoria-Codecs) | Contenedores, compresión, submuestreo de croma, comparativa de códecs, transcodificación y streaming adaptativo |
+| [A2 · FFmpeg y yt-dlp](A2-FFmpeg-YTDLP) | Instalación, inspección, transcodificación, recortes y extracción de pistas; comparativa de protocolos RTMP, HLS, RTSP y SRT |
+| [A3 · Jellyfin](A3-Jellyfin) | Servidor multimedia en Docker, biblioteca, acceso desde la red y el móvil, comparativa con Plex |
+| [A4 · Streaming RTMP](A4-RTMP-Streaming) | Servidor nginx-rtmp en Docker, emisión con FFmpeg y OBS, reproducción con VLC |
 
-## Índice de Actividades
-
-* **[A1-Teoria-Codecs](M0375-Servicios-Multimedia/A1-Teoria-Codecs) (Ref: B7A0)**
-  * Análisis profundo sobre formatos contenedores, eficiencia de compresión (H.264, AV1) y transcodificación por hardware.
-  * Incluye una auditoría crítica sobre el uso de la IA en la búsqueda de documentación técnica.
-
-* **[A2-FFmpeg-YTDLP](M0375-Servicios-Multimedia/A2-FFmpeg-YTDLP) (Ref: B7A2)**
-  * Documentación teórica sobre los protocolos RTMP, HLS, RTSP y SRT.
-  * Guía práctica de instalación y uso de FFmpeg y YT-DLP para la manipulación y descarga de streams de vídeo y audio por consola.
-
-* **[A3-Jellyfin](M0375-Servicios-Multimedia/A3-Jellyfin) (Ref: B7A3)**
-  * Despliegue de un servidor multimedia Jellyfin mediante contenedores Docker.
-  * Comparativa técnica frente a Plex y guía de configuración del cliente móvil.
-
-* **[A4-RTMP-Streaming](M0375-Servicios-Multimedia/A4-RTMP-Streaming) (Ref: B8A4)**
-  * Implementación de un servidor de streaming en directo utilizando `nginx-rtmp-module`.
-  * Configuración de la ingesta de vídeo mediante OBS Studio y FFmpeg, y visualización del flujo en red local a través de VLC.
+**Herramientas:** Ubuntu Server 24.04, Docker, FFmpeg, yt-dlp, Jellyfin, nginx-rtmp, OBS Studio, VLC.
 
 ---
 
-## Stack Tecnológico y Herramientas
-
-* **Sistemas y Contenedores:** Ubuntu Server, Docker.
-* **Procesamiento de Medios:** FFmpeg, YT-DLP.
-* **Servidores Web/Streaming:** NGINX (RTMP Module), Jellyfin.
-* **Protocolos Analizados:** RTMP, RTSP, HLS, SRT.
-* **Clientes de Prueba:** OBS Studio, VLC Media Player.
-
----
-
-**Autor:** David Coca  
-**Ciclo:** Administración de Sistemas Informáticos en Red (ASIR)
+David Coca · ASIR

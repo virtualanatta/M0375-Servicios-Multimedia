@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Despliegue de Jellyfin. Ajustar las rutas de config, cache y media antes de ejecutar.
+
 docker run -d \
  --name jellyfin \
  --user 1000:1000 \
